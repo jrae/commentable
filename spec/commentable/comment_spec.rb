@@ -21,8 +21,10 @@ describe Comment do
   end
 
   context "associations" do
-    its(:user) { should be_an(User) }
-    its(:commentable) { should be_a(Project) }
+    it 'has polymorphic associations' do
+      expect(subject.user_type).to eq('User')
+      expect(subject.commentable_type).to eq('Project')
+    end
   end
 
   context "counter" do

@@ -1,8 +1,12 @@
+= Forked Gem developed by "Nando Vieira"
+
+Really useful gem from Nando Viera but had a need to make the user model polymorphic. Check out the original:
+
+* Nando Vieira (http://nandovieira.com.br)
+
 = Commentable
 
 This is a really simple ActiveRecord plugin that allows models to be commented.
-
-Commentable is tightly coupled to an User model. If you don't have it, there's no game for you here.
 
 == Installation
 
@@ -16,13 +20,10 @@ First, you'll have to create the comments table. Run <tt>rails generate migratio
     def self.up
       create_table :comments do |t|
         t.text :body, :formatted_body
-        t.references :commentable, :polymorphic => true
-        t.references :user
+        t.references :commentable, polymorphic: true, index: true
+        t.references :user, polymorphic: true, index: true
         t.timestamps
       end
-
-      add_index :comments, [:commentable_id, :commentable_type], :name => "index_on_commentable"
-      add_index :comments, [:commentable_id, :commentable_type, :user_id], :name => "index_on_commentable_and_user"
     end
 
     def self.down
@@ -49,14 +50,14 @@ There's a shortcut for that.
 You can have formatted comments. This is specially useful if you want to provide Markdown support, for instance. Just use the <tt>:format</tt> option passing any object that responds to the <tt>call</tt> method. The block's return will be used as the <tt>formatted_body</tt> attribute.
 
   class Task < ActiveRecord::Base
-    commentable :format => proc {|comment| Redcarpet.new(comment.body.to_s).to_html}
+    commentable :format => proc {|comment| Markdown.new(comment.body.to_s).to_html}
   end
 
 <b>Final note:</b> remember to add a <tt>comments_count</tt> column to every single model that will be commentable. This is required by the Comment model.
 
 == Maintainer
 
-* Nando Vieira (http://nandovieira.com.br)
+* Jason Rae
 
 == License
 

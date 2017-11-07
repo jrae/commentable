@@ -1,8 +1,8 @@
 ActiveRecord::Schema.define(:version => 0) do
   create_table :comments do |t|
     t.text :body, :formatted_body
-    t.references :commentable, :polymorphic => true
-    t.references :user
+    t.references :commentable, polymorphic: true
+    t.references :user, polymorphic: true
     t.timestamps
   end
 

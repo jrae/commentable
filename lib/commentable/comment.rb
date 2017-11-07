@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
-  belongs_to :commentable, :polymorphic => true, :counter_cache => true
-  belongs_to :user
+  belongs_to :commentable, polymorphic: true, counter_cache: true
+  belongs_to :user, polymorphic: true
 
   validates_presence_of :body
   validates_presence_of :user, :commentable
