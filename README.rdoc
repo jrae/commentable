@@ -8,11 +8,11 @@ Really useful gem from Nando Viera but had a need to make the user model polymor
 
 This is a really simple ActiveRecord plugin that allows models to be commented.
 
-== Installation
-
-  gem install commentable
-
 == Usage
+
+Add this to gem file
+
+gem 'commentable', git: 'https://github.com/jrae/commentable.git'
 
 First, you'll have to create the comments table. Run <tt>rails generate migration create_comments</tt> and add the following code:
 
