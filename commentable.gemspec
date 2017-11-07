@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "commentable"
   s.version     = Commentable::Version::STRING
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Nando Vieira"]
-  s.email       = ["fnando.vieira@gmail.com"]
+  s.authors     = ["Nando Vieira", "Jason Rae"]
+  s.email       = ["fnando.vieira@gmail.com", "jasonrae63@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/commentable"
   s.summary     = "Add comment support for ActiveRecord models."
   s.description = s.summary
@@ -18,10 +18,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "activerecord"
-  s.add_development_dependency "rake", "~> 0.8.7"
-  s.add_development_dependency "rspec", "~> 2.6"
-  s.add_development_dependency "sqlite3", "~> 1.3"
-  s.add_development_dependency "test_notifier", "~> 0.3.6"
-  s.add_development_dependency "ruby-debug19"
-  s.add_development_dependency "redcarpet", "~> 1.17"
+  s.add_development_dependency "rake", "~> 12.2"
+  s.add_development_dependency "rspec", "~> 3.7"
+  s.add_development_dependency "redcarpet", "~> 3.4"
+  s.add_development_dependency "test_notifier", "~> 2.0"
+  s.add_development_dependency "sqlite3", "~> 1.3.13"
 end
